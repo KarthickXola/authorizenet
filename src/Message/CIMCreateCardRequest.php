@@ -97,7 +97,7 @@ class CIMCreateCardRequest extends CIMAbstractRequest
             $req->state = $card->getBillingState();
             $req->zip = $card->getBillingPostcode();
             $req->country = $card->getBillingCountry();
-            $req->phoneNumber = $card->getBillingPhone();
+            $req->phoneNumber = substr(trim($card->getBillingPhone()), 0, 25);
 
             $defaultBillTo = $this->getParameter('defaultBillTo');
             if (is_array($defaultBillTo)) {
